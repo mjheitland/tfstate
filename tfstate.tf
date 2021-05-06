@@ -1,33 +1,6 @@
-#--- 0_tfaurora/tfstate.tf
-
-#-------------
-#--- Variables
-#-------------
-
-variable "project" {
-  description = "Project name is used as namespace for Terraform remote state and other resources."
-  type        = string
-}
-
-variable "region" {
-  description = "AWS region we are deploying to"
-  type        = string
-}
-
-variable "bucket" {
-  description = "S3 bucket to store TF remote state"
-  type        = string
-}
-
-variable "dynamodb_table" {
-  description = "DynamoDB table to store TF remote state lock"
-  type        = string
-}
-
-
-#------------
-#--- Provider
-#------------
+#----------------
+#--- Data Sources
+#----------------
 
 data "aws_caller_identity" "current" {}
 
@@ -103,19 +76,4 @@ resource "aws_dynamodb_table" "tf_table" {
     name = "LockID"
     type = "S"
   }
-}
-
-
-#----------
-#--- Output
-#----------
-
-output "output_s3_bucket_arn" {
-  value       = aws_s3_bucket.tf_bucket.arn
-  description = "The arn of the s3 bucket that stores terraform's remote state"
-}
-
-output "dynamodb_table_arn" {
-  value       = aws_dynamodb_table.tf_table.arn
-  description = "The arn of the dynamodb table that stores the terraform locks"
 }
