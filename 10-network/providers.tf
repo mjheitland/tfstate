@@ -8,10 +8,9 @@ terraform {
     }
   }
 
-  # Uncomment the lines below if you want to store the local state of this module into the state bucket that it is generating
-  #  backend "s3" {
-  #    key = "00-tfstate.tfstate"
-  #  }
+  backend "s3" {
+    key = "10-networking.tfstate"
+  }
 }
 
 provider "aws" {
