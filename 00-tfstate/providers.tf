@@ -8,16 +8,18 @@ terraform {
     }
   }
 
-  # Uncomment the lines below if you want to store the local state of this module into the state bucket that it is generating
+  backend "local" {}
+  # Comment out the line above and uncomment the lines below if you want to store the local state of this module into the state bucket that it is generating
   #  backend "s3" {
   #    key = "00-tfstate.tfstate"
   #  }
 }
 
 provider "aws" {
+  region = var.region
   default_tags {
     tags = {
-      project          = "tfstateprj"
+      project          = var.project
       "ops/managed-by" = "terraform"
     }
   }

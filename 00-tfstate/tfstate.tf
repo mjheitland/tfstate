@@ -54,12 +54,12 @@ resource "aws_s3_bucket" "tfstate" {
 
   # A boolean that indicates all objects (including any locked objects) should be deleted from the bucket
   # so that the bucket can be destroyed without error. These objects are not recoverable!
-  force_destroy = false
+  force_destroy = true
 
   # prevent accidental deletion of this bucket
   # (if you really have to destroy this bucket, change this value to false and reapply, then run destroy)
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 

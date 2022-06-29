@@ -1,7 +1,11 @@
 variable "project" {
   type        = string
-  description = "(Optional) Name of the project whose TF state we want to store."
-  default     = "tfstateprj"
+  description = "Name of the project whose TF state we want to store."
+}
+
+variable "region" {
+  type        = string
+  description = "AWS region where the resources should be deployed to."
 }
 
 variable "kms_key_id" {

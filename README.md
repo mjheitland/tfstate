@@ -9,10 +9,12 @@ Then you will use bucket and table as a remote backend, here we have an example 
 ## Deploy 00_tfstate
 
 ```terraform
-# If you want to save TF state for 00_tfstate, run the commands twice
-# and remove the comments for the backend in providers.tf
-
+# If you want to save TF state for 00_tfstate,
+# remove the comments for the backend in providers.tf and run the init command a second time.
 terraform init
+
+# To prevent accidental deletion of this bucket,
+# change `force_destroy` to `false` and `prevent_destroy` to `true` in `tfstate.tf`
 terraform apply -auto-approve
 
 # WARNING: if you delete this bucket the corresponding project might loose all its TF state files
