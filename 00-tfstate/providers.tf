@@ -11,7 +11,8 @@ terraform {
   backend "local" {}
   # Comment out the line above and uncomment the lines below if you want to store the local state of this module into the state bucket that it is generating
   #  backend "s3" {
-  #    key = "00-tfstate.tfstate"
+  #    key     = "00-tfstate.tfstate"
+  #    encrypt = true
   #  }
 }
 

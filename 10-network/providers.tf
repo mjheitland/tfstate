@@ -9,7 +9,8 @@ terraform {
   }
 
   backend "s3" {
-    key = "10-networking.tfstate"
+    key     = "10-networking.tfstate"
+    encrypt = true
   }
 }
 
